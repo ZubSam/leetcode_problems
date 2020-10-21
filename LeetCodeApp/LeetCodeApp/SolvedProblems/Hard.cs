@@ -22,10 +22,7 @@ namespace LeetCodeApp.SolvedProblems
 
                 Array.Copy(nums1, nums3, l1);
                 Array.Copy(nums2, 0, nums3, l1, l2);
-
                 Array.Sort(nums3);
-
-
 
                 if (lS % 2 == 0)
                 {

@@ -189,6 +189,184 @@ namespace LeetCodeApp.SolvedProblems
             return count;
         }
 
+        /// <summary>
+        /// https://leetcode.com/problems/create-target-array-in-the-given-order/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public int[] CreateTargetArray(int[] nums, int[] index)
+        {
+            var res = new int[nums.Length];
 
+            for (int i = 0; i < res.Length; i++)
+            {
+                res[i] = -1;
+            }
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                var value = nums[i];
+
+                var j = index[i];
+
+                if (res[j] > -1)
+                {
+
+                    var t = -1;
+                    for (int k = j; k < i; k++)
+                    {
+                        if (t < 0)
+                        {
+                            t = res[k + 1];
+                            res[k + 1] = res[k];
+                        }
+                        else
+                        {
+                            var y = res[k + 1];
+                            res[k + 1] = t;
+                            t = y;
+                        }
+
+
+
+                    }
+
+
+                    res[j] = value;
+                }
+                else
+                {
+                    res[j] = value;
+                }
+
+
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/shuffle-string/
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="indices"></param>
+        /// <returns></returns>
+        public string RestoreString(string s, int[] indices)
+        {
+            var arr = new char[indices.Length];
+
+            for (int i = 0; i < indices.Length; i++)
+            {
+                var index = indices[i];
+                var val = s[i];
+                arr[index] = val;
+            }
+
+            return new string(arr);
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public int[] SmallerNumbersThanCurrent(int[] nums)
+        {
+            var arr = new int[nums.Length];
+            for (int i = 0; i < nums.Length; i++)
+            {
+                var val = nums[i];
+                var count = 0;
+                for (int j = 0; j < nums.Length; j++)
+                {
+                    if (i == j)
+                    {
+                        continue;
+                    }
+
+                    if (val > nums[j])
+                    {
+                        count++;
+                    }
+                }
+                arr[i] = count;
+            }
+
+            return arr;
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public int SubtractProductAndSum(int n)
+        {
+            var isEnded = false;
+
+            var sum = 0;
+            var product = 1;
+
+            while (!isEnded)
+            {
+                if (n != 0)
+                {
+                    var t = n % 10;
+
+                    sum += t;
+                    product *= t;
+
+                    n = n / 10;
+                }
+                else
+                {
+                    isEnded = true;
+                }
+            }
+
+            if(sum == 0)
+            {
+                return sum;
+            }
+
+            return product - sum;
+        }
+
+        /// <summary>
+        /// https://leetcode.com/problems/decompress-run-length-encoded-list/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public int[] DecompressRLElist(int[] nums)
+        {
+            var lenght = 0;
+
+            for (int i = 0; i < nums.Length; i += 2)
+            {
+                lenght += nums[i];
+            }
+
+            var arr = new int[lenght];
+
+            var count = 0;
+
+            for (int i = 0; i < nums.Length; i += 2)
+            {
+                var freq = nums[i];
+                var val = nums[i + 1];
+
+
+
+                for (var j = count; j < count + freq; j++)
+                {
+                    arr[j] = val;
+
+                }
+                count += freq;
+            }
+
+            return arr;
+        }
     }
 }

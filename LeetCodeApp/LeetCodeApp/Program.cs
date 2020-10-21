@@ -9,16 +9,35 @@ namespace LeetCodeApp
     {
         static void Main(string[] args)
         {
+
+            var nums = new int[] { 1, 1, 2, 3 };
+
+            var lenght = 0;
+
+            for (int i = 0; i < nums.Length; i+=2)
+            {
+                lenght += nums[i];
+            }
+
+            var arr = new int[lenght];
+
+            var count = 0;
+
+            for (int i = 0; i < nums.Length; i+=2)
+            {
+                var freq = nums[i];
+                var val = nums[i + 1];
+
+                
+
+                for (var j=count; j < count+freq; j++)
+                {
+                    arr[j] = val;
+
+                }
+                count += freq;
+            }
             
-
-            var nums1 = new int[] { 2 };
-
-            var nums2 = new int[] {  };
-
-            
-            
-
-
             Console.ReadKey();
         }
 
