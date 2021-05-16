@@ -1,4 +1,6 @@
 # leetcode_problems
+Решеные задачи складывать в папку Task1 по номеру задачи в leetcode
+
 https://leetcode.com/problems/queries-on-number-of-points-inside-a-circle/
 https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/
 https://leetcode.com/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/
